@@ -147,6 +147,14 @@
   .footer-contact-item { color: rgba(255,255,255,.75); }
   .footer-contact-item .icon-lucide { color: rgba(255,255,255,.65); stroke: rgba(255,255,255,.65); }
   .footer-social a { background: rgba(255,255,255,.1); color: rgba(255,255,255,.72); }
+
+  /* Navbar mobile menu — dark mode harus tetap terang backgroundnya */
+  .navbar-menu { background: #1e2230 !important; }
+  .navbar-menu a { color: #e4e4e7 !important; }
+  .navbar-menu a:hover, .navbar-menu a.active { color: #fff !important; background: var(--primary) !important; }
+  .hamburger.open span { background: #e4e4e7 !important; }
+
+
 }
 
 /* Reduced Motion */
@@ -154,16 +162,11 @@
   .hero-particle, .hero-scroll, .reveal { animation: none !important; transition: none !important; }
 }
 
-/* 960px breakpoint */
-@media (max-width: 960px) {
-  .hero-layout { grid-template-columns: 1fr; padding-top: 1rem; }
-  .hero-aside { justify-self: stretch; max-width: none; margin-top: .5rem; }
-  .hero-aside-frame { transform: rotate(-1deg); }
-  .keunggulan-mosaic .icon-card, .keunggulan-mosaic .icon-card--wide { grid-column: span 12; }
-  .section--pull { margin-top: 0; }
-}
+/* ─── Prevent horizontal overflow globally ─── */
+html, body { overflow-x: hidden; max-width: 100%; }
+* { min-width: 0; }
 
-/* 1024px */
+/* ─── 1024px ─── */
 @media (max-width: 1024px) {
   .grid-4 { grid-template-columns: repeat(2,1fr); }
   .stats-grid { grid-template-columns: repeat(2,1fr); }
@@ -172,50 +175,171 @@
   .berita-layout { grid-template-columns: 1fr; }
   .berita-sidebar { position: static; }
   .gallery-grid-main { grid-template-columns: repeat(2,1fr); }
+  .jurusan-grid-split { grid-template-columns: 1fr; gap: 2rem; }
 }
 
-/* 768px */
+/* ─── 960px ─── */
+@media (max-width: 960px) {
+  .hero-layout { grid-template-columns: 1fr; padding-top: 1rem; }
+  .hero-aside { justify-self: stretch; max-width: none; margin-top: .5rem; }
+  .hero-aside-frame { transform: rotate(-1deg); }
+  .keunggulan-mosaic .icon-card,
+  .keunggulan-mosaic .icon-card--wide { grid-column: span 12; }
+  .section--pull { margin-top: 0; }
+}
+
+/* ─── 768px ─── */
 @media (max-width: 768px) {
+  /* Navbar */
+  .navbar.scrolled { backdrop-filter: none; -webkit-backdrop-filter: none; background: #ffffff; }
   .hamburger { display: flex; }
-  .navbar-menu { display: none; flex-direction: column; align-items: stretch; position: fixed; top: 0; right: 0; bottom: 0; width: 280px; padding: 5rem 1.5rem 2rem; background: var(--white); box-shadow: var(--shadow-xl); transform: translateX(100%); transition: transform .35s ease; z-index: 999; }
+  .navbar-menu {
+    display: none; flex-direction: column; align-items: stretch;
+    position: fixed; top: 0; right: 0; height: 100vh; max-height: 100vh; width: 280px;
+    padding: 5rem 1.5rem 2rem;
+    background: #ffffff;
+    box-shadow: var(--shadow-xl);
+    transform: translateX(100%);
+    transition: transform .35s ease;
+    z-index: 999;
+    overflow-y: auto;
+  }
   .navbar-menu.open { display: flex; transform: translateX(0); }
-  .navbar-menu a { color: var(--gray-800) !important; padding: .85rem 1rem; border-radius: var(--radius-sm); }
+  .navbar-menu a { color: #1F2937 !important; padding: .85rem 1rem; border-radius: var(--radius-sm); }
+  .btn-nav-ppdb { color: #fff !important; }
+
+  /* Page hero — padding dikurangi di mobile */
+  .page-hero { padding: 5.5rem 0 2.5rem; }
+  .page-hero h1 { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .page-hero p { font-size: .9rem; }
+
+  /* Grids → single column */
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: repeat(2,1fr); }
   .welcome-card { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
   .visi-misi-grid { grid-template-columns: 1fr; }
   .profil-split { grid-template-columns: 1fr; gap: 2.5rem; }
   .profil-fact-card--wide { grid-column: span 1; }
+  .profil-facts-grid { grid-template-columns: 1fr 1fr; }
   .org-staff-grid { grid-template-columns: repeat(2,1fr); }
-  .kontak-grid { grid-template-columns: 1fr; }
+  .kontak-grid { grid-template-columns: 1fr; gap: 2rem; }
   .form-row { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: .75rem; text-align: center; }
   .facility-grid { grid-template-columns: 1fr 1fr; }
   .gallery-grid { grid-template-columns: repeat(2,1fr); grid-auto-rows: 150px; }
   .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .mapel-grid, .prospek-list { grid-template-columns: 1fr; }
+
+  /* PPDB */
   .steps-container { flex-wrap: wrap; gap: 1rem; }
   .step-line { display: none; }
   .ppdb-form-card { padding: 1.5rem; }
   .ppdb-trust-grid { grid-template-columns: 1fr; }
+  .upload-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Fasilitas */
   .facility-split { margin-bottom: 3rem; }
+  .facility-split .grid-2 { grid-template-columns: 1fr; }
+  .facility-img-wrap img { height: 260px; }
+  .facility-stat-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Berita */
+  .berita-layout { grid-template-columns: 1fr; }
+  .berita-sidebar { position: static; width: 100%; }
+  .sidebar-card { overflow: hidden; }
+  .pagination-row { flex-wrap: wrap; }
+
+  /* Kontak */
+  .kontak-strip .grid-4 { grid-template-columns: repeat(2,1fr); }
+  .kontak-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .social-stack-inner { flex-direction: column; }
+  .contact-detail { word-break: break-word; overflow-wrap: anywhere; }
+  .contact-detail p { word-break: break-word; }
+  .map-embed iframe { height: 250px; }
+  .kontak-info-card { padding: 1.5rem; }
+
+  /* Profil — org chart */
+  .org-chart { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .org-leader { min-width: auto; width: 100%; padding: 1rem 1.5rem; }
+
+  /* Table scroll */
+  .table-scroll { overflow-x: auto; }
+  .guru-table { min-width: 560px; }
+
+  /* Keunggulan */
+  .keunggulan-mosaic { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .keunggulan-mosaic .icon-card { grid-column: span 1 !important; }
+  .keunggulan-mosaic .icon-card--wide { grid-column: span 2 !important; }
+  .keunggulan-head { text-align: center; }
+
+  /* Section headings */
+  .section-heading { margin-bottom: 2.5rem; }
+
+  /* Hero fix */
+  .hero-stats { gap: 1rem; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+
+  /* Misc */
   .grid-order-1, .grid-order-2 { order: unset; }
+  .jurusan-grid-split { grid-template-columns: 1fr; }
 }
 
-/* 640px */
+/* ─── 640px ─── */
 @media (max-width: 640px) {
   .upload-grid { grid-template-columns: 1fr; }
   .summary-grid { grid-template-columns: 1fr; }
   .gallery-grid-main { grid-template-columns: 1fr; }
+  .kontak-strip .grid-4 { grid-template-columns: 1fr 1fr; }
+  .hero-layout { gap: 1.5rem; }
+  .hero--split { padding: 4.5rem 0 3rem; }
+  .ppdb-hero-meta { gap: 1rem; }
+  .ppdb-hero-meta-item { font-size: .78rem; }
+  .welcome-card { padding: 1.75rem; }
+  .profil-data-card { padding: 1.5rem; }
 }
 
-/* 480px */
+/* ─── 480px ─── */
 @media (max-width: 480px) {
   .org-staff-grid { grid-template-columns: 1fr; }
-  .org-leader { min-width: auto; width: 100%; max-width: 320px; }
-  .section { padding: 3.5rem 0; }
-  .hero { min-height: 95vh; }
-  .hero-stats { gap: 1.25rem; }
+  .org-leader { min-width: auto; width: 100%; max-width: 100%; }
+  .section { padding: 3rem 0; }
+  .hero { min-height: auto; padding: 5rem 0 3rem; }
+  .hero-stats { gap: 1.25rem; flex-wrap: wrap; }
+  .hero-title { font-size: clamp(1.8rem, 7vw, 2.5rem); }
+  .hero-actions .btn { width: 100%; justify-content: center; }
   .facility-grid, .gallery-grid { grid-template-columns: 1fr; }
   .gallery-item.wide, .gallery-item.tall { grid-column: auto; grid-row: auto; }
   .btn-lg { padding: .85rem 1.75rem; font-size: .9rem; }
+  .kontak-strip .grid-4 { grid-template-columns: 1fr; }
+  .kontak-strip-item { padding: .75rem; }
+  .keunggulan-mosaic { grid-template-columns: 1fr; }
+  .keunggulan-mosaic .icon-card,
+  .keunggulan-mosaic .icon-card--wide { grid-column: span 1 !important; }
+  .ppdb-form-card { padding: 1.25rem; }
+  .ppdb-trust-grid { grid-template-columns: 1fr; }
+  .steps-container { gap: .75rem; }
+  .form-nav-actions { flex-direction: column; gap: .75rem; }
+  .form-nav-actions__push { margin-left: 0; }
+  .profil-facts-grid { grid-template-columns: 1fr; }
+  .profil-fact-card--wide { grid-column: span 1; }
+  .facility-stat-grid { grid-template-columns: 1fr; }
+  .news-meta { flex-wrap: wrap; }
+  .sidebar-card { padding: 1.25rem; }
+  .footer-grid { gap: 2rem; }
+  .container { padding: 0 1rem; }
 }
+
+/* ─── 360px (small phones) ─── */
+@media (max-width: 360px) {
+  .hero-stat .number { font-size: 1.5rem; }
+  .hero-badge { font-size: .65rem; }
+  .btn { padding: .65rem 1.5rem; font-size: .85rem; }
+  .navbar-menu { width: 100%; }
+  .ppdb-form-card { padding: 1rem; }
+  .container { padding: 0 .75rem; }
+}
+
+
+
+

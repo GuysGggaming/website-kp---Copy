@@ -15,7 +15,6 @@
 @import 'page-hero.css';
 @import 'footer.css';
 @import 'animations.css';
-@import 'utilities.css';
 @import 'berita.css';
 @import 'kontak.css';
 @import 'ppdb.css';
@@ -23,3 +22,6 @@
 @import 'jurusan.css';
 @import 'fasilitas.css';
 @import 'bukti.css';
+
+/* --- Utilities & Responsive (HARUS paling akhir agar override halaman) --- */
+@import 'utilities.css';

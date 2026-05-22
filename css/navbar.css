@@ -37,10 +37,11 @@
   box-shadow: 0 4px 14px rgba(67,160,71,.4);
 }
 .btn-nav-ppdb:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(67,160,71,.5) !important; }
-.hamburger { display: none; flex-direction: column; gap: 5px; padding: 0.4rem; cursor: pointer; border: none; background: transparent; border-radius: var(--radius-sm); }
+.hamburger { display: none; flex-direction: column; gap: 5px; padding: 0.4rem; cursor: pointer; border: none; background: transparent; border-radius: var(--radius-sm); position: relative; z-index: 1001; }
 .hamburger:focus-visible { outline: 2px solid var(--primary-light); outline-offset: 2px; }
 .hamburger span { width: 24px; height: 2.5px; background: var(--white); border-radius: 2px; transition: var(--transition); }
 .navbar.scrolled .hamburger span { background: var(--dark); }
+.hamburger.open span { background: #1F2937; }
 .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
