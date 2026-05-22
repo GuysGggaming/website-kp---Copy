@@ -1,0 +1,25 @@
+/* ============================================================
+   SMK NUFA CITRA MANDIRI — Master Stylesheet
+   Semua style dipisah ke file masing-masing dan di-import di sini.
+   ============================================================ */
+
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+
+/* --- Partials --- */
+@import 'base.css';
+@import 'navbar.css';
+@import 'components.css';
+@import 'hero.css';
+@import 'sections.css';
+@import 'page-hero.css';
+@import 'footer.css';
+@import 'animations.css';
+@import 'utilities.css';
+@import 'berita.css';
+@import 'kontak.css';
+@import 'ppdb.css';
+@import 'profil.css';
+@import 'jurusan.css';
+@import 'fasilitas.css';
+@import 'bukti.css';

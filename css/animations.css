@@ -1,0 +1,30 @@
+/* ============================================================
+   ANIMATIONS, LIGHTBOX & REVEAL
+   ============================================================ */
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 3000; background: rgba(0,0,0,.92); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .3s; }
+.lightbox.open { opacity: 1; pointer-events: all; }
+.lightbox img { max-width: 90vw; max-height: 85vh; border-radius: var(--radius-md); object-fit: contain; }
+.lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.15); color: var(--white); font-size: 1.4rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); }
+.lightbox-close:hover { background: rgba(255,255,255,.25); }
+.lightbox-close .icon-lucide { width: 1.35rem; height: 1.35rem; color: #fff; stroke: #fff; }
+
+/* Keyframes */
+@keyframes fadeInUp   { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeInDown { from{opacity:0;transform:translateY(-24px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn     { from{opacity:0} to{opacity:1} }
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left  { opacity:0; transform:translateX(-30px); transition: opacity .7s ease, transform .7s ease; }
+.reveal-right { opacity:0; transform:translateX(30px);  transition: opacity .7s ease, transform .7s ease; }
+.reveal-left.visible, .reveal-right.visible { opacity:1; transform:translateX(0); }
+.delay-1 { transition-delay: .1s; }
+.delay-2 { transition-delay: .2s; }
+.delay-3 { transition-delay: .3s; }
+.delay-4 { transition-delay: .4s; }
+
+/* Keyframe: fadeSlideIn */
+@keyframes fadeSlideIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }

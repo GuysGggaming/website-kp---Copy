@@ -1,0 +1,31 @@
+/* ============================================================
+   FOOTER & WhatsApp Float
+   ============================================================ */
+.footer { background: var(--dark); color: rgba(255,255,255,.75); padding: 4rem 0 0; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
+.footer-brand .logo { display: flex; align-items: center; gap: .85rem; margin-bottom: 1.25rem; }
+.footer-brand .logo-box { width: 46px; height: 46px; background: transparent; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; }
+.footer-brand .name { font-family: var(--font-head); font-weight: 700; color: var(--white); font-size: .95rem; }
+.footer-brand p { font-size: .86rem; line-height: 1.7; margin-top: .1rem; }
+.footer-social { display: flex; gap: .6rem; margin-top: 1.5rem; }
+.footer-social a { width: 38px; height: 38px; border-radius: var(--radius-sm); background: rgba(255,255,255,.08); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: rgba(255,255,255,.75); transition: var(--transition); }
+.footer-social a:hover { background: var(--primary); color: var(--white); transform: translateY(-2px); }
+.footer-col h5, .footer-heading { font-family: var(--font-head); font-weight: 700; color: var(--white); margin-bottom: 1.25rem; font-size: .95rem; }
+.footer-col ul li { margin-bottom: .6rem; }
+.footer-col ul li a { font-size: .875rem; color: rgba(255,255,255,.65); transition: var(--transition); }
+.footer-col ul li a:hover { color: var(--gold); padding-left: 4px; }
+.footer-col .footer-contact-item { display: flex; gap: .75rem; margin-bottom: .85rem; font-size: .875rem; }
+.footer-bottom { margin-top: 3rem; padding: 1.5rem 0; border-top: 1px solid rgba(255,255,255,.08); display: flex; justify-content: space-between; align-items: center; }
+.footer-bottom p { font-size: .82rem; }
+.footer-bottom .links { display: flex; gap: 1.25rem; }
+.footer-bottom .links a { font-size: .82rem; color: rgba(255,255,255,.55); transition: var(--transition); }
+.footer-bottom .links a:hover { color: var(--white); }
+.footer-tagline { font-size: .75rem; color: rgba(255,255,255,.5); }
+.footer-contact-item { display: flex; gap: .65rem; align-items: flex-start; }
+.footer-contact-item .icon-lucide { margin-top: .12rem; color: rgba(255,255,255,.72); stroke: rgba(255,255,255,.72); }
+.footer-min .footer-contact-item { font-size: .875rem; }
+
+/* WhatsApp Float */
+.wa-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 900; width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; box-shadow: 0 4px 16px rgba(37,211,102,.5); transition: var(--transition); cursor: pointer; }
+.wa-float .icon-lucide { color: #fff; stroke: #fff; }
+.wa-float:hover { transform: scale(1.03); box-shadow: 0 8px 28px rgba(37,211,102,.6); }

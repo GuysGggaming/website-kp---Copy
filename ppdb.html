@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pendaftaran PPDB 2025/2026 - SMK NUFA CITRA MANDIRI</title>
+  <meta name="description" content="Formulir Penerimaan Peserta Didik Baru (PPDB) online SMK NUFA CITRA MANDIRI tahun ajaran 2025/2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/images/logoo.png" type="image/jpeg">
+</head>
+<body class="page-ppdb">
+
+<!-- NAVBAR -->
+<nav class="navbar scrolled" id="navbar">
+  <div class="container">
+    <a href="index.html" class="navbar-brand">
+      <div class="navbar-logo"><img src="assets/images/logoo.png" alt="Logo SMK NUFA" style="width:38px;height:38px;object-fit:cover;border-radius:50%;"></div>
+      <div class="navbar-name"><span class="school-name">SMK NUFA CITRA MANDIRI</span><span class="school-type">Sekolah Menengah Kejuruan</span></div>
+    </a>
+    <div class="navbar-menu" id="navMenu">
+      <a href="index.html">Beranda</a><a href="profil.html">Profil</a><a href="jurusan.html">Jurusan</a>
+      <a href="fasilitas.html">Fasilitas</a>
+      <a href="berita.html">Berita</a><a href="kontak.html">Kontak</a>
+      <a href="ppdb.html" class="btn-nav-ppdb active">Daftar PPDB</a>
+    </div>
+    <button type="button" class="hamburger" id="hamburger" aria-label="Buka menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- PPDB HERO -->
+<section class="ppdb-hero">
+  <div class="container">
+    <div class="ppdb-hero-badge">Pendaftaran online</div>
+    <h1>PPDB 2025/2026</h1>
+    <p>Isi formulir pendaftaran dengan lengkap dan benar. Pastikan semua dokumen yang diupload jelas dan terbaca.</p>
+    <div class="ppdb-hero-meta">
+      <div class="ppdb-hero-meta-item"><i data-lucide="calendar" class="icon-lucide" aria-hidden="true"></i> Batas daftar: 30 Mei 2026</div>
+      <div class="ppdb-hero-meta-item"><i data-lucide="users" class="icon-lucide" aria-hidden="true"></i> Kuota: 360 siswa</div>
+      <div class="ppdb-hero-meta-item"><i data-lucide="banknote" class="icon-lucide" aria-hidden="true"></i> Biaya pendaftaran: gratis</div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS INDICATOR -->
+<div class="ppdb-steps-bar">
+  <div class="container">
+    <div class="steps-container" id="stepsContainer">
+      <div class="step active" id="stepIndicator1">
+        <div class="step-num">1</div>
+        <div class="step-label">Data Pribadi</div>
+      </div>
+      <div class="step-line" id="stepLine1"></div>
+      <div class="step" id="stepIndicator2">
+        <div class="step-num">2</div>
+        <div class="step-label">Data Akademik</div>
+      </div>
+      <div class="step-line" id="stepLine2"></div>
+      <div class="step" id="stepIndicator3">
+        <div class="step-num">3</div>
+        <div class="step-label">Upload Dokumen</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FORM AREA -->
+<div class="ppdb-wrapper">
+  <div class="container">
+    <div class="ppdb-form-card">
+      <p class="required-note">Kolom bertanda <span>*</span> wajib diisi.</p>
+
+      <!-- ═══════ STEP 1: DATA PRIBADI ═══════ -->
+      <div class="form-step active" data-step="1" id="formStep1">
+        <h3 class="form-step-title"><i data-lucide="user" class="icon-lucide" aria-hidden="true"></i> Data pribadi calon siswa</h3>
+        <p class="step-desc">Isi data diri calon siswa baru dengan lengkap dan sesuai dokumen resmi (KTP/KK).</p>
+
+        <div class="form-group">
+          <label for="namaLengkap">Nama Lengkap (sesuai akta lahir) *</label>
+          <input type="text" id="namaLengkap" name="namaLengkap" class="form-control" placeholder="Contoh: Ahmad Budi Santoso" required autocomplete="name">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nik">NIK (Nomor Induk Kependudukan) *</label>
+            <input type="text" id="nik" name="nik" class="form-control" placeholder="16 digit angka" maxlength="16" pattern="[0-9]{16}" required>
+          </div>
+          <div class="form-group">
+            <label for="noHP">Nomor HP / WhatsApp *</label>
+            <input type="tel" id="nomorHP" name="nomorHP" class="form-control" placeholder="08xxxxxxxxxx" required autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tempatLahir">Tempat Lahir *</label>
+            <input type="text" id="tempatLahir" name="tempatLahir" class="form-control" placeholder="Kota tempat lahir" required>
+          </div>
+          <div class="form-group">
+            <label for="tanggalLahir">Tanggal Lahir *</label>
+            <input type="date" id="tanggalLahir" name="tanggalLahir" class="form-control" required max="2015-01-01">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Jenis Kelamin *</label>
+          <div class="radio-group gender-group-spaced" id="genderGroup">
+            <label class="radio-opt" id="radioL">
+              <input type="radio" name="jenisKelamin" value="Laki-laki" id="jenisKelaminL">
+              <div class="radio-indicator"></div>
+              <span>♂ Laki-laki</span>
+            </label>
+            <label class="radio-opt" id="radioP">
+              <input type="radio" name="jenisKelamin" value="Perempuan" id="jenisKelaminP">
+              <div class="radio-indicator"></div>
+              <span>♀ Perempuan</span>
+            </label>
+          </div>
+          <select id="jenisKelamin" name="jenisKelamin" class="form-control sr-only" required aria-hidden="true" tabindex="-1">
+            <option value="">Pilih</option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="alamat">Alamat Lengkap *</label>
+          <textarea id="alamat" name="alamat" class="form-control" rows="3" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota/Kabupaten, Kode Pos" required></textarea>
+        </div>
+
+        <div class="form-nav form-nav-actions">
+          <div class="form-nav-actions__push">
+            <button type="button" class="btn btn-primary" data-ppdb-nav="next">Lanjut: data akademik</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════ STEP 2: DATA AKADEMIK ═══════ -->
+      <div class="form-step" data-step="2" id="formStep2">
+        <h3 class="form-step-title"><i data-lucide="school" class="icon-lucide" aria-hidden="true"></i> Data akademik dan pilihan jurusan</h3>
+        <p class="step-desc">Informasi tentang sekolah asal dan program keahlian yang diminati.</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="asalSekolah">Asal Sekolah *</label>
+            <input type="text" id="asalSekolah" name="asalSekolah" class="form-control" placeholder="Contoh: SMP Negeri 1 Kota" required>
+          </div>
+          <div class="form-group">
+            <label for="tahunLulus">Tahun Lulus *</label>
+            <select id="tahunLulus" name="tahunLulus" class="form-control" required>
+              <option value="">-- Pilih Tahun --</option>
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="jurusan">Pilihan Jurusan *</label>
+          <select id="jurusan" name="jurusan" class="form-control" required>
+            <option value="">-- Pilih Program Keahlian --</option>
+            <option value="TKJ - Teknik Komputer dan Jaringan">TKJ — Teknik komputer dan jaringan</option>
+          </select>
+        </div>
+
+        <!-- Info Jurusan dinamis -->
+        <div id="infoJurusan" class="info-jurusan hidden">
+          <div class="info-jurusan__inner">
+            <div class="info-jurusan__title" id="infoJurusanTitle"></div>
+            <p class="info-jurusan__desc" id="infoJurusanDesc"></p>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nilaiRata">Nilai Rata-rata Rapor Kelas 9 *</label>
+            <input type="number" id="nilaiRata" name="nilaiRata" class="form-control" placeholder="Contoh: 85.5" min="0" max="100" step="0.1" required>
+          </div>
+          <div class="form-group">
+            <label for="namaOrtu">Nama Orang Tua / Wali *</label>
+            <input type="text" id="namaOrtu" name="namaOrtu" class="form-control" placeholder="Nama lengkap orang tua" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="noHPOrtu">Nomor HP Orang Tua / Wali *</label>
+          <input type="tel" id="noHPOrtu" name="noHPOrtu" class="form-control" placeholder="08xxxxxxxxxx" required>
+        </div>
+
+        <div class="form-group">
+          <label for="prestasi">Prestasi / Penghargaan (jika ada)</label>
+          <textarea id="prestasi" name="prestasi" class="form-control" rows="2" placeholder="Contoh: Juara 2 Olimpiade Matematika Tingkat Kota 2024 (opsional)"></textarea>
+        </div>
+
+        <div class="form-nav form-nav-actions">
+          <button type="button" class="btn btn-outline-primary" data-ppdb-nav="prev">Kembali</button>
+          <div class="form-nav-actions__push">
+            <button type="button" class="btn btn-primary" data-ppdb-nav="next">Lanjut: unggah dokumen</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════ STEP 3: UPLOAD DOKUMEN ═══════ -->
+      <div class="form-step" data-step="3" id="formStep3">
+        <h3 class="form-step-title"><i data-lucide="paperclip" class="icon-lucide" aria-hidden="true"></i> Unggah dokumen persyaratan</h3>
+        <p class="step-desc">Upload semua dokumen yang diperlukan. Format yang diterima: JPG, PNG, PDF. Ukuran maksimal 5 MB per file.</p>
+
+        <div class="upload-grid">
+          <!-- FOTO DIRI -->
+          <div class="upload-box">
+            <span class="upload-label">Foto diri *</span>
+            <span class="upload-req">Format: JPG/PNG • Maks: 5 MB • Latar merah atau biru</span>
+            <div class="upload-area" id="upload-foto">
+              <input type="file" id="inputFoto" accept="image/*" aria-label="Unggah foto diri">
+              <div class="upload-icon" aria-hidden="true"><i data-lucide="image" class="icon-lucide"></i></div>
+              <label for="inputFoto">Pilih atau seret foto</label>
+              <p>JPG, PNG</p>
+            </div>
+            <div id="previewFoto"></div>
+          </div>
+
+          <!-- KK -->
+          <div class="upload-box">
+            <span class="upload-label">Kartu keluarga (KK) *</span>
+            <span class="upload-req">Format: JPG/PNG/PDF • Maks: 5 MB</span>
+            <div class="upload-area" id="upload-kk">
+              <input type="file" id="inputKK" accept="image/*,.pdf" aria-label="Unggah kartu keluarga">
+              <div class="upload-icon" aria-hidden="true"><i data-lucide="file-text" class="icon-lucide"></i></div>
+              <label for="inputKK">Pilih atau seret KK</label>
+              <p>JPG, PNG, PDF</p>
+            </div>
+            <div id="previewKK"></div>
+          </div>
+
+          <!-- IJAZAH / SKL -->
+          <div class="upload-box">
+            <span class="upload-label">Ijazah atau SKL *</span>
+            <span class="upload-req">Format: JPG/PNG/PDF • Maks: 5 MB</span>
+            <div class="upload-area" id="upload-ijazah">
+              <input type="file" id="inputIjazah" accept="image/*,.pdf" aria-label="Unggah ijazah atau SKL">
+              <div class="upload-icon" aria-hidden="true"><i data-lucide="graduation-cap" class="icon-lucide"></i></div>
+              <label for="inputIjazah">Pilih atau seret Ijazah/SKL</label>
+              <p>JPG, PNG, PDF</p>
+            </div>
+            <div id="previewIjazah"></div>
+          </div>
+        </div>
+
+        <!-- Ringkasan Data -->
+        <div class="ppdb-summary-panel">
+          <h4>Ringkasan data pendaftaran</h4>
+          <div class="summary-grid">
+            <div class="summary-item"><div class="s-label">Nama Lengkap</div><div class="s-value" id="sumNama">—</div></div>
+            <div class="summary-item"><div class="s-label">NIK</div><div class="s-value" id="sumNIK">—</div></div>
+            <div class="summary-item"><div class="s-label">Tempat, Tanggal Lahir</div><div class="s-value" id="sumTTL">—</div></div>
+            <div class="summary-item"><div class="s-label">Jenis Kelamin</div><div class="s-value" id="sumJK">—</div></div>
+            <div class="summary-item"><div class="s-label">Asal Sekolah</div><div class="s-value" id="sumSekolah">—</div></div>
+            <div class="summary-item"><div class="s-label">Pilihan Jurusan</div><div class="s-value" id="sumJurusan">—</div></div>
+          </div>
+        </div>
+
+        <!-- Persetujuan -->
+        <div class="ppdb-consent-panel">
+          <label class="ppdb-consent-label" for="checklist">
+            <input type="checkbox" id="checklist" class="ppdb-consent-check">
+            <span class="ppdb-consent-text">
+              Saya menyatakan bahwa seluruh data dan dokumen yang saya isikan adalah benar dan dapat dipertanggungjawabkan.
+              Saya bersedia menerima konsekuensi apabila terdapat data yang tidak benar.
+            </span>
+          </label>
+        </div>
+
+        <div class="form-nav form-nav-actions">
+          <button type="button" class="btn btn-outline-primary" data-ppdb-nav="prev">Kembali</button>
+          <div class="form-nav-actions__push">
+            <button type="button" class="btn btn-accent btn-lg btn-submit-pending" id="btnSubmit">Kirim pendaftaran</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info tambahan -->
+    <div class="ppdb-trust-grid">
+      <div class="ppdb-trust-card">
+        <i data-lucide="lock" class="icon-lucide" aria-hidden="true"></i>
+        <h4>Data aman</h4>
+        <p>Data Anda tersimpan aman di sistem kami</p>
+      </div>
+      <div class="ppdb-trust-card">
+        <i data-lucide="clipboard-list" class="icon-lucide" aria-hidden="true"></i>
+        <h4>Bukti otomatis</h4>
+        <p>ID pendaftaran muncul setelah pengiriman berhasil</p>
+      </div>
+      <div class="ppdb-trust-card">
+        <i data-lucide="message-circle" class="icon-lucide" aria-hidden="true"></i>
+        <h4>Butuh bantuan?</h4>
+        <p><a href="https://wa.me/6281234567890" class="link-accent">Chat WhatsApp admin</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-modal">
+    <div class="success-icon-lucide" aria-hidden="true"><i data-lucide="sparkles" class="icon-lucide"></i></div>
+    <h3>Pendaftaran Berhasil!</h3>
+    <p>Selamat! Formulir PPDB Anda telah berhasil dikirim. Simpan ID pendaftaran berikut sebagai bukti:</p>
+
+    <div class="registration-id">
+      <div class="id-label">ID PENDAFTARAN ANDA</div>
+      <div class="id-value" id="regId">PPDB-2025-00000</div>
+    </div>
+
+    <p class="modal-note">
+      Pengumuman hasil seleksi akan disampaikan pada <strong>10 Juni 2026</strong> melalui website dan WhatsApp.
+    </p>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-primary" id="btnPrint">Cetak bukti</button>
+      <button type="button" class="btn btn-outline-primary" id="btnCloseSuccess">Selesai</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="logo"><div class="logo-box"><img src="assets/images/logoo.png" alt="Logo SMK NUFA" style="width:36px;height:36px;object-fit:cover;border-radius:50%;"></div><div><div class="name">SMK NUFA CITRA MANDIRI</div><div class="footer-tagline">Sekolah menengah kejuruan</div></div></div><p>Mencetak generasi cerdas, terampil, dan berkarakter untuk menghadapi tantangan industri global.</p><div class="footer-social"><a href="#" aria-label="Facebook"><i data-lucide="facebook" class="icon-lucide" aria-hidden="true"></i></a><a href="#" aria-label="Instagram"><i data-lucide="instagram" class="icon-lucide" aria-hidden="true"></i></a><a href="#" aria-label="YouTube"><i data-lucide="youtube" class="icon-lucide" aria-hidden="true"></i></a><a href="#" aria-label="WhatsApp"><i data-lucide="message-circle" class="icon-lucide" aria-hidden="true"></i></a></div></div>
+      <div class="footer-col"><h5>Navigasi</h5><ul><li><a href="index.html">Beranda</a></li><li><a href="profil.html">Profil Sekolah</a></li><li><a href="jurusan.html">Program Jurusan</a></li><li><a href="fasilitas.html">Fasilitas</a></li></ul></div>
+      <div class="footer-col"><h5>Program</h5><ul><li><a href="jurusan.html#tkj">TKJ — Teknik Komputer &amp; Jaringan</a></li><li><a href="ppdb.html">Daftar PPDB</a></li><li><a href="kontak.html">Hubungi Kami</a></li></ul></div>
+      <div class="footer-col footer-min"><h5>Bantuan PPDB</h5><div class="footer-contact-item"><i data-lucide="smartphone" class="icon-lucide icon-lucide--sm" aria-hidden="true"></i><span>0812-8883-5894</span></div><div class="footer-contact-item"><i data-lucide="mail" class="icon-lucide icon-lucide--sm" aria-hidden="true"></i><span>nufacitramandiri@gmail.com</span></div><div class="footer-contact-item"><i data-lucide="clock" class="icon-lucide icon-lucide--sm" aria-hidden="true"></i><span>Senin–Sabtu 07.00–16.00</span></div></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 SMK NUFA CITRA MANDIRI. Hak cipta dilindungi.</p><div class="links"><a href="#">Kebijakan Privasi</a></div></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/6281234567890" class="wa-float" target="_blank" rel="noopener" aria-label="Chat WhatsApp"><i data-lucide="message-circle" class="icon-lucide icon-lucide--lg" aria-hidden="true"></i></a>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+<script src="js/main.js" defer></script>
+<script>
+  // ── Radio button visual ──────────────────────────────────────
+  document.querySelectorAll('.radio-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      document.querySelectorAll('.radio-opt').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      const val = opt.querySelector('input').value;
+      document.getElementById('jenisKelamin').value = val;
+    });
+  });
+
+  // ── Info jurusan dinamis ─────────────────────────────────────
+  const jurusanInfo = {
+    'TKJ - Teknik Komputer dan Jaringan': {
+      title: 'Teknik Komputer dan Jaringan (TKJ)',
+      desc: 'Kuasai jaringan komputer, cloud computing, dan keamanan siber. Ideal untuk yang tertarik dengan infrastruktur IT.'
+    }
+  };
+
+  document.getElementById('jurusan').addEventListener('change', function() {
+    const info = jurusanInfo[this.value];
+    const box = document.getElementById('infoJurusan');
+    if (info) {
+      document.getElementById('infoJurusanTitle').textContent = info.title;
+      document.getElementById('infoJurusanDesc').textContent = info.desc;
+      box.classList.remove('hidden');
+    } else {
+      box.classList.add('hidden');
+    }
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+
+  // ── Update summary ────────────────────────────────────────────
+  function updateSummary() {
+    const nama  = document.getElementById('namaLengkap')?.value || '—';
+    const nik   = document.getElementById('nik')?.value || '—';
+    const ttl   = (document.getElementById('tempatLahir')?.value || '') + ', ' + (document.getElementById('tanggalLahir')?.value || '');
+    const jk    = document.getElementById('jenisKelamin')?.value || '—';
+    const sko   = document.getElementById('asalSekolah')?.value || '—';
+    const jur   = document.getElementById('jurusan')?.value || '—';
+
+    document.getElementById('sumNama').textContent    = nama;
+    document.getElementById('sumNIK').textContent     = nik;
+    document.getElementById('sumTTL').textContent     = ttl.trim().replace(/^,\s/, '');
+    document.getElementById('sumJK').textContent      = jk;
+    document.getElementById('sumSekolah').textContent = sko;
+    document.getElementById('sumJurusan').textContent = jur;
+  }
+
+  // ── Checkbox persetujuan ──────────────────────────────────────
+  document.getElementById('checklist').addEventListener('change', function() {
+    const btn = document.getElementById('btnSubmit');
+    if (btn) btn.classList.toggle('btn-submit-pending', !this.checked);
+  });
+  window.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('btnSubmit');
+    const chk = document.getElementById('checklist');
+    if (btn && chk) btn.classList.toggle('btn-submit-pending', !chk.checked);
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
+<script src="js/config.js" defer></script>
+<script src="js/ppdb.js" defer></script>
+</body>
+</html>

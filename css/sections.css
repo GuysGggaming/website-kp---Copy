@@ -1,0 +1,56 @@
+/* ============================================================
+   SECTIONS — Stats, Welcome, CTA Banner, Jurusan Preview
+   ============================================================ */
+
+/* Stats Bar */
+.stats-bar { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); padding: 2.5rem 0; }
+.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; text-align: center; }
+.stat-item .num { font-family: var(--font-head); font-size: 2.5rem; font-weight: 800; color: var(--white); }
+.stat-item .lbl { font-size: .85rem; color: rgba(255,255,255,.75); margin-top: .2rem; }
+
+/* Welcome */
+.welcome { background: var(--off-white); }
+.welcome-card { background: var(--surface); border-radius: var(--radius-lg); padding: 3rem; box-shadow: var(--shadow-lg); display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: center; }
+.welcome-photo { flex-shrink: 0; text-align: center; }
+.welcome-photo img { width: 180px; height: 180px; object-fit: cover; border-radius: var(--radius-full); border: 5px solid var(--primary-light); box-shadow: 0 8px 30px rgba(21,101,192,.25); }
+.welcome-photo .name { font-family: var(--font-head); font-weight: 700; margin-top: 1rem; }
+.welcome-photo .role { font-size: .82rem; color: var(--gray-400); }
+.welcome-text blockquote { font-family: var(--font-head); font-size: 1.15rem; font-style: italic; color: var(--primary-dark); padding-left: 1.25rem; border-left: 4px solid var(--accent); margin-bottom: 1rem; }
+
+/* CTA Banner */
+.cta-banner { background: linear-gradient(135deg, var(--accent-dark), var(--accent), #66BB6A); padding: 5rem 0; text-align: center; position: relative; overflow: hidden; }
+.cta-banner::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+.cta-banner > * { position: relative; z-index: 1; }
+.cta-banner h2 { color: var(--white); font-size: clamp(1.8rem,4vw,2.8rem); margin-bottom: 1rem; }
+.cta-banner p  { color: rgba(255,255,255,.85); font-size: 1.05rem; margin-bottom: 2.25rem; }
+
+/* Jurusan Cards (index preview) */
+.jurusan-card { background: var(--surface); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); transition: var(--transition); display: flex; flex-direction: column; }
+.jurusan-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-xl); }
+.jurusan-header { padding: 2.5rem 2rem; text-align: center; position: relative; overflow: hidden; }
+.jurusan-card:nth-child(1) .jurusan-header { background: linear-gradient(135deg, #1565C0, #1976D2); }
+.jurusan-card:nth-child(2) .jurusan-header { background: linear-gradient(135deg, #2E7D32, #43A047); }
+.jurusan-card:nth-child(3) .jurusan-header { background: linear-gradient(135deg, #6A1B9A, #8E24AA); }
+.jurusan-icon { font-size: 4rem; margin-bottom: 1rem; }
+.jurusan-header h3 { color: var(--white); font-size: 1.4rem; }
+.jurusan-header p  { color: rgba(255,255,255,.8); font-size: .88rem; margin-top: .5rem; }
+.jurusan-body { padding: 2rem; flex: 1; }
+.jurusan-body ul { margin-top: .75rem; }
+.jurusan-body ul li { padding: .45rem 0; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; gap: .65rem; font-size: .88rem; color: var(--gray-600); }
+.jurusan-body ul li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+.jurusan-footer { padding: 1.25rem 2rem; background: var(--gray-50); }
+.jurusan-preview-wrap { display: flex; justify-content: center; }
+.jurusan-card-single { max-width: 420px; width: 100%; }
+
+/* Keunggulan section */
+.keunggulan-kicker { font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--primary); margin-bottom: .5rem; }
+.keunggulan-title { font-size: clamp(1.75rem,3vw,2.35rem); max-width: 20ch; }
+.keunggulan-mosaic { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(12,1fr); gap: 1.5rem; }
+.keunggulan-mosaic .icon-card { grid-column: span 4; text-align: left; padding: 2rem 1.5rem; }
+.keunggulan-mosaic .icon-card--tilt { transform: rotate(-0.75deg); }
+.keunggulan-mosaic .icon-card--wide { grid-column: span 8; }
+.keunggulan-mosaic .icon-card h3 { font-size: 1.1rem; margin-bottom: .5rem; font-family: var(--font-head); }
+.keunggulan-mosaic .icon { width: 52px; height: 52px; margin: 0 0 1rem 0; border-radius: var(--radius-md); font-size: unset; }
+.section-off-white { background: var(--off-white); }
+.section--pull { padding-top: 6rem; padding-bottom: 6rem; margin-top: -2rem; position: relative; z-index: 1; }
+.section-bg-muted { background: var(--bg-2); }

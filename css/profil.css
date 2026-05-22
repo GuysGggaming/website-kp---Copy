@@ -1,0 +1,70 @@
+/* ============================================================
+   PROFIL — School Profile Page
+   ============================================================ */
+
+/* Timeline */
+.timeline { position: relative; padding-left: 3rem; }
+.timeline::before { content:''; position:absolute; left:18px; top:0; bottom:0; width:2px; background: linear-gradient(var(--primary),var(--accent)); }
+.timeline-item { position: relative; margin-bottom: 2.5rem; }
+.timeline-dot { position: absolute; left: -2.75rem; top: 4px; width: 20px; height: 20px; border-radius: 50%; background: var(--primary); border: 3px solid var(--white); box-shadow: 0 0 0 2px var(--primary); }
+.timeline-year { font-size: .78rem; color: var(--primary); font-weight: 700; margin-bottom: .25rem; letter-spacing: .06em; }
+.timeline-item h4 { margin-bottom: .35rem; }
+
+/* Visi Misi */
+.visi-misi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.visi-card, .misi-card { border-radius: var(--radius-md); padding: 2.25rem; box-shadow: var(--shadow-md); }
+.visi-card { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: var(--white); }
+.visi-card h3, .visi-card p { color: var(--white); }
+.visi-icon-wrap { margin-bottom: 1rem; }
+.visi-icon-wrap .icon-lucide { width: 2.5rem; height: 2.5rem; color: #fff; stroke: #fff; }
+.visi-lead { margin-top: 1rem; font-size: 1.05rem; line-height: 1.8; color: rgba(255,255,255,.95); }
+.misi-card { background: var(--surface); border: 1px solid var(--gray-200); color: var(--fg); }
+.misi-card h3 { color: var(--fg); }
+.misi-card ul li { display: flex; align-items: flex-start; gap: .75rem; padding: .6rem 0; border-bottom: 1px solid var(--gray-200); font-size: .9rem; color: var(--muted); }
+.misi-card ul li:last-child { border-bottom: none; }
+.misi-card ul li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: .45rem; flex-shrink: 0; }
+
+/* Guru Table */
+.guru-table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid var(--gray-200); }
+.guru-table th { background: var(--primary); color: var(--white); padding: 1rem 1.25rem; text-align: left; font-family: var(--font-head); font-size: .88rem; }
+.guru-table td { padding: .9rem 1.25rem; border-bottom: 1px solid var(--gray-200); font-size: .88rem; color: var(--fg); }
+.guru-table tr:hover td { background: var(--gray-50); }
+
+/* Profil Data Card */
+.profil-data-card { background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: var(--radius-lg); padding: 2.5rem; color: #fff; }
+.profil-data-card h3 { color: #fff; margin-bottom: 1.5rem; font-family: var(--font-head); }
+.profil-data-table { width: 100%; font-size: .88rem; border-collapse: collapse; }
+.profil-data-table tr { border-bottom: 1px solid rgba(255,255,255,.15); }
+.profil-data-table tr:last-child { border-bottom: none; }
+.profil-data-table td { padding: .7rem 0; vertical-align: top; }
+.profil-data-table td:first-child { color: rgba(255,255,255,.75); width: 45%; }
+.profil-data-table td:last-child  { font-weight: 600; color: rgba(255,255,255,.98); }
+
+/* Profil Split Layout */
+.profil-split { display: grid; grid-template-columns: repeat(2,1fr); gap: 4rem; align-items: center; }
+.profil-label-pill { display: inline-block; background: linear-gradient(135deg, var(--primary-light), var(--accent)); color: #fff; font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: .35rem 1.1rem; border-radius: var(--radius-full); margin-bottom: 1rem; }
+.profil-facts-grid { margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.profil-fact-card { padding: 1.25rem; background: var(--surface); border: 1px solid var(--gray-200); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+.profil-fact-card--wide { grid-column: span 2; }
+.profil-fact-card__label { font-size: .75rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.profil-fact-card__value { font-weight: 700; color: var(--fg); margin-top: .2rem; font-size: 1rem; line-height: 1.35; }
+.profil-fact-card__value--sm     { font-size: .88rem; }
+.profil-fact-card__value--accent { color: var(--accent); }
+
+/* Org Chart */
+.org-chart { max-width: 900px; margin: 0 auto; }
+.org-chart__row { display: flex; justify-content: center; margin-bottom: 1.5rem; }
+.org-chart__row--tight { margin-bottom: 1rem; }
+.org-leader { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; padding: 1.1rem 2.5rem; border-radius: var(--radius-md); text-align: center; min-width: 280px; box-shadow: var(--shadow-lg); }
+.org-leader__kicker { font-size: .72rem; opacity: .88; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+.org-leader__name  { font-weight: 700; margin-top: .25rem; font-size: 1rem; }
+.org-connector { display: flex; justify-content: center; }
+.org-connector__line { width: 2px; height: 28px; background: var(--gray-200); }
+.org-pill { background: var(--accent); color: #fff; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; padding: .35rem 1.5rem; border-radius: var(--radius-full); }
+.org-staff-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 1.5rem; }
+.org-staff-card { background: var(--surface); border: 1px solid var(--gray-200); padding: .85rem 1rem; border-radius: var(--radius-sm); text-align: center; box-shadow: var(--shadow-sm); }
+.org-staff-card__role { font-size: .68rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: .2rem; }
+.org-staff-card__name { font-weight: 600; font-size: .88rem; color: var(--fg); }
+.org-tk { background: linear-gradient(135deg, #f9a825, #f57f17); color: #fff; padding: .9rem 2rem; border-radius: var(--radius-md); text-align: center; min-width: 220px; box-shadow: var(--shadow-md); }
+.org-tk__kicker { font-size: .7rem; opacity: .9; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.org-tk__name   { font-weight: 700; margin-top: .25rem; font-size: .95rem; }

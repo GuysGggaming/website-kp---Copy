@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - SMK NUFA CITRA MANDIRI</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/images/logoo.png" type="image/png">
+  <style>
+    .admin-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--gray-50);
+    }
+    .admin-header {
+      background: var(--surface);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .admin-content {
+      flex: 1;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    /* Login Screen */
+    #loginScreen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+    }
+    .login-box {
+      background: var(--surface);
+      padding: 2.5rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-200);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    
+    /* Dashboard Screen */
+    #dashboardScreen {
+      display: none;
+    }
+    
+    .admin-grid {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    
+    @media (max-width: 768px) {
+      .admin-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .admin-card {
+      background: var(--surface);
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+    }
+    
+    .news-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    .news-table th, .news-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--gray-200);
+      text-align: left;
+    }
+    .news-table th {
+      font-weight: 600;
+      color: var(--muted);
+      background: var(--gray-50);
+    }
+    .news-table img.thumb {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+    }
+    .img-preview {
+      margin-top: 1rem;
+      max-width: 100%;
+      border-radius: var(--radius-sm);
+      display: none;
+    }
+    
+    /* Toast overriding */
+    .admin-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      padding: 1rem 1.5rem;
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(150%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 9999;
+    }
+    .admin-toast.show {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<div class="admin-container">
+  
+  <!-- Header (Only visible slightly inside login, full inside dashboard) -->
+  <header class="admin-header">
+    <div style="display: flex; align-items: center; gap: 0.75rem; font-weight: 700; color: var(--primary);">
+      <img src="assets/images/logoo.png" alt="Logo SMK NUFA" style="width:36px;height:36px;object-fit:cover;border-radius:8px;">
+      <span>Admin Panel — SMK NUFA CITRA MANDIRI</span>
+    </div>
+    <div id="userInfo" style="display: none; align-items: center; gap: 1rem;">
+      <a href="berita.html" target="_blank" style="font-size: 0.9rem; color: var(--muted); text-decoration: none;">Lihat Web</a>
+      <button id="btnLogout" class="btn btn-outline-primary btn-sm">Logout</button>
+    </div>
+  </header>
+
+  <div class="admin-content">
+    
+    <!-- LOGIN SCREEN -->
+    <div id="loginScreen">
+      <div class="login-box">
+        <h2 style="margin-bottom: 0.5rem; color: var(--fg);">Login Admin</h2>
+        <p style="color: var(--muted); margin-bottom: 2rem; font-size: 0.9rem;">Masuk untuk mengelola konten website</p>
+        <form id="formLogin">
+          <div style="margin-bottom: 1rem; text-align: left;">
+            <label class="form-label" for="username">Username</label>
+            <input type="text" id="username" class="form-control" required autocomplete="username">
+          </div>
+          <div style="margin-bottom: 1.5rem; text-align: left;">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" id="password" class="form-control" required autocomplete="current-password">
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Masuk</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- DASHBOARD SCREEN -->
+    <div id="dashboardScreen">
+      <div style="margin-bottom: 2rem;">
+        <h1 style="color: var(--fg);">Manajemen Berita</h1>
+        <p style="color: var(--muted);">Tambahkan, edit, atau hapus konten berita yang akan tampil di halaman utama.</p>
+      </div>
+      
+      <div class="admin-grid">
+        
+        <!-- Form Tambah Berita -->
+        <div class="admin-card">
+          <h4 style="margin-bottom: 1.5rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--gray-200); color: var(--fg);">Tambah Berita Baru</h4>
+          <form id="formNews">
+            <div style="margin-bottom: 1rem;">
+              <label class="form-label" for="newsTitle">Judul Berita *</label>
+              <input type="text" id="newsTitle" class="form-control" required placeholder="Contoh: Juara 1 Lomba Web">
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label class="form-label" for="newsCategory">Kategori *</label>
+              <select id="newsCategory" class="form-control" required>
+                <option value="Kegiatan">Kegiatan</option>
+                <option value="Prestasi">Prestasi</option>
+                <option value="Event">Event</option>
+                <option value="Pengumuman">Pengumuman</option>
+                <option value="Kerjasama">Kerjasama</option>
+              </select>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label class="form-label" for="newsDesc">Deskripsi Ringkas *</label>
+              <textarea id="newsDesc" class="form-control" rows="3" required placeholder="Tuliskan isi berita di sini..."></textarea>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+              <label class="form-label" for="newsImage">Upload Foto *</label>
+              <input type="file" id="newsImage" class="form-control" accept="image/*" required>
+              <img id="imagePreview" class="img-preview" alt="Preview Gambar">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;" id="btnSaveNews">Simpan Terbitkan</button>
+          </form>
+        </div>
+
+        <!-- Daftar Berita -->
+        <div class="admin-card">
+          <h4 style="margin-bottom: 1rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--gray-200); color: var(--fg);">Daftar Berita Aktif</h4>
+          <div style="overflow-x: auto;">
+            <table class="news-table">
+              <thead>
+                <tr>
+                  <th style="width: 70px;">Gambar</th>
+                  <th>Detail Berita</th>
+                  <th>Kategori</th>
+                  <th style="width: 100px; text-align: center;">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="newsTableBody">
+                <!-- Baris akan dirender oleh js/admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="adminToast" class="admin-toast">Pesan berhasil</div>
+
+<!-- Menggunakan Feather / Lucide icons jika perlu -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

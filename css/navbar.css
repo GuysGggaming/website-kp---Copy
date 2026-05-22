@@ -1,0 +1,46 @@
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: transparent;
+  transition: var(--transition);
+  padding: 1.2rem 0;
+}
+.navbar.scrolled {
+  background: rgba(255,255,255,.97);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md);
+  padding: .75rem 0;
+}
+.navbar .container { display: flex; align-items: center; justify-content: space-between; }
+.navbar-brand { display: flex; align-items: center; gap: .85rem; }
+.navbar-logo {
+  width: 48px; height: 48px; background: transparent;
+  border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; overflow: hidden;
+}
+.navbar-name { display: flex; flex-direction: column; }
+.navbar-name .school-name { font-family: var(--font-head); font-weight: 700; font-size: .95rem; color: var(--white); line-height: 1.2; transition: var(--transition); }
+.navbar-name .school-type { font-size: .72rem; font-weight: 400; color: rgba(255,255,255,.75); transition: var(--transition); }
+.navbar.scrolled .school-name { color: var(--dark); }
+.navbar.scrolled .school-type { color: var(--gray-400); }
+.navbar-menu { display: flex; align-items: center; gap: .25rem; }
+.navbar-menu a { padding: .5rem .85rem; border-radius: var(--radius-sm); font-size: .88rem; font-weight: 500; color: rgba(255,255,255,.9); transition: var(--transition); }
+.navbar.scrolled .navbar-menu a { color: var(--gray-800); }
+.navbar-menu a:hover, .navbar-menu a.active { color: var(--white); background: var(--primary); }
+.navbar.scrolled .navbar-menu a:hover, .navbar.scrolled .navbar-menu a.active { color: var(--white); background: var(--primary); }
+.btn-nav-ppdb {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important;
+  color: var(--white) !important; font-weight: 600 !important;
+  padding: .55rem 1.3rem !important; border-radius: var(--radius-full) !important;
+  box-shadow: 0 4px 14px rgba(67,160,71,.4);
+}
+.btn-nav-ppdb:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(67,160,71,.5) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; padding: 0.4rem; cursor: pointer; border: none; background: transparent; border-radius: var(--radius-sm); }
+.hamburger:focus-visible { outline: 2px solid var(--primary-light); outline-offset: 2px; }
+.hamburger span { width: 24px; height: 2.5px; background: var(--white); border-radius: 2px; transition: var(--transition); }
+.navbar.scrolled .hamburger span { background: var(--dark); }
+.hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
