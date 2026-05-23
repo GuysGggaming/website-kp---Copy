@@ -7,6 +7,7 @@
   <title>Bukti Pendaftaran PPDB - SMK NUFA CITRA MANDIRI</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body class="bukti-page-body">
@@ -94,7 +95,7 @@
 
       <!-- ACTIONS -->
       <div class="print-actions">
-        <button type="button" class="btn btn-primary" onclick="window.print()">Cetak bukti</button>
+        <button type="button" class="btn btn-primary" id="btnDownloadPDF" onclick="downloadPDF()">⬇ Unduh bukti PDF</button>
         <a href="ppdb.html" class="btn btn-outline-primary">Daftar lagi</a>
         <a href="index.html" class="btn btn-outline-primary">Kembali ke beranda</a>
       </div>
@@ -148,6 +149,37 @@
         console.error('Gagal parse data PPDB:', e);
       }
     });
+  </script>
+
+  <script>
+    // ── Download PDF ─────────────────────────────────────────────
+    function downloadPDF() {
+      const btn = document.getElementById('btnDownloadPDF');
+      const regId = document.getElementById('idValue')?.textContent || 'PPDB';
+      const nama  = document.getElementById('bNama')?.textContent || 'pendaftar';
+
+      // Loading state
+      btn.disabled = true;
+      btn.textContent = 'Menyiapkan PDF...';
+
+      const element = document.querySelector('.bukti-card');
+      const opt = {
+        margin:      [8, 8, 8, 8],
+        filename:    `Bukti-PPDB-${regId}.pdf`,
+        image:       { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, logging: false },
+        jsPDF:       { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak:   { mode: 'avoid-all' }
+      };
+
+      html2pdf().set(opt).from(element).save().then(() => {
+        btn.disabled = false;
+        btn.textContent = '⬇ Unduh bukti PDF';
+      }).catch(() => {
+        btn.disabled = false;
+        btn.textContent = '⬇ Unduh bukti PDF';
+      });
+    }
   </script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
   <script>
