@@ -178,10 +178,15 @@
           logging: false, 
           windowWidth: 800,
           onclone: function(doc) {
-            // Reset margin/padding body agar rata
+            // Reset margin/padding body & container agar rata
             doc.body.style.margin = '0';
             doc.body.style.padding = '0';
             doc.body.style.background = '#ffffff';
+
+            const container = doc.querySelector('.print-container');
+            container.style.margin = '0';
+            container.style.padding = '0';
+            container.style.maxWidth = '800px';
 
             const card = doc.querySelector('.bukti-card');
             card.style.margin = '0';
