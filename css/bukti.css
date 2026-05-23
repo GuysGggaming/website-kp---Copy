@@ -87,21 +87,206 @@
   .bukti-footer { padding: 1rem 1.25rem; font-size: .72rem; }
 }
 
-/* ── Force desktop layout saat generate PDF ── */
-.pdf-generating .bukti-header { flex-wrap: nowrap !important; padding: 2.5rem !important; gap: 2rem !important; }
-.pdf-generating .bukti-logo { width: 80px !important; height: 80px !important; }
-.pdf-generating .bukti-school-info h1 { font-size: 1.4rem !important; }
-.pdf-generating .bukti-school-info p { font-size: .85rem !important; }
-.pdf-generating .qr-box { width: 108px !important; flex-direction: column !important; margin-left: auto !important; padding: 6px 6px 4px !important; }
+/* ── Layout tetap saat generate PDF (mobile & desktop sama) ── */
+.pdf-generating {
+  background: #fff !important;
+  overflow: visible !important;
+}
+
+.pdf-generating .print-container {
+  max-width: 794px !important;
+  width: 794px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.pdf-generating .bukti-card {
+  width: 794px !important;
+  max-width: 794px !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+
+.pdf-generating .bukti-header {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  padding: 18px 20px !important;
+  gap: 14px !important;
+}
+
+.pdf-generating .bukti-logo {
+  width: 56px !important;
+  height: 56px !important;
+  flex-shrink: 0 !important;
+}
+
+.pdf-generating .bukti-school-info {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+.pdf-generating .bukti-school-info h1 {
+  font-size: 15px !important;
+  margin: 0 0 3px !important;
+  line-height: 1.25 !important;
+}
+
+.pdf-generating .bukti-school-info p,
+.pdf-generating .bukti-tagline {
+  font-size: 10px !important;
+  line-height: 1.35 !important;
+  margin: 0 !important;
+}
+
+.pdf-generating .qr-box {
+  width: 76px !important;
+  margin-left: auto !important;
+  flex-direction: column !important;
+  flex-shrink: 0 !important;
+  padding: 4px !important;
+  gap: 2px !important;
+}
+
 .pdf-generating .qr-box #qrCanvas img,
-.pdf-generating .qr-box #qrCanvas canvas { width: 88px !important; height: 88px !important; }
-.pdf-generating .id-box { flex-direction: row !important; align-items: center !important; padding: 1.5rem 2.5rem !important; }
-.pdf-generating .id-box .value { font-size: 1.8rem !important; word-break: normal !important; }
-.pdf-generating .id-box-right { text-align: right !important; }
-.pdf-generating .bukti-body { padding: 2.5rem !important; }
-.pdf-generating .bukti-body .data-grid { grid-template-columns: 1fr 1fr !important; }
-.pdf-generating .bukti-body .data-cell:nth-child(odd) { border-right: 1px solid #e2e8f0 !important; border-bottom: 1px solid #e2e8f0 !important; padding-bottom: .85rem !important; }
-.pdf-generating .bukti-body .data-cell:nth-child(even) { padding-top: .85rem !important; }
-.pdf-generating .status-banner { flex-direction: row !important; align-items: center !important; }
-.pdf-generating .print-actions { display: none !important; }
+.pdf-generating .qr-box #qrCanvas canvas {
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.pdf-generating .qr-label {
+  font-size: 7px !important;
+  margin-top: 0 !important;
+}
+
+.pdf-generating .id-box {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 12px 20px !important;
+  gap: 12px !important;
+}
+
+.pdf-generating .id-box .value {
+  font-size: 17px !important;
+  word-break: normal !important;
+}
+
+.pdf-generating .id-box-right {
+  text-align: right !important;
+  flex-shrink: 0 !important;
+}
+
+.pdf-generating .bukti-body {
+  padding: 14px 20px 16px !important;
+}
+
+.pdf-generating .bukti-section-title {
+  margin: 0 0 8px !important;
+  font-size: 12px !important;
+}
+
+.pdf-generating .data-grid {
+  display: none !important;
+}
+
+.pdf-generating .pdf-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 11px;
+  table-layout: fixed;
+}
+
+.pdf-generating .pdf-data-table td {
+  padding: 7px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: top;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.pdf-generating .pdf-data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.pdf-generating .pdf-data-table td:first-child {
+  width: 38%;
+  background: #f8fafc;
+  font-weight: 600;
+  color: #475569;
+  border-right: 1px solid #e2e8f0;
+}
+
+.pdf-generating .pdf-data-table td:last-child {
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.pdf-generating .pdf-data-table tr.pdf-row--primary td:last-child {
+  font-weight: 700;
+  color: #1976d2;
+}
+
+.pdf-generating .status-banner {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+  padding: 10px 12px !important;
+  margin-top: 10px !important;
+}
+
+.pdf-generating .status-banner h4 {
+  font-size: 11px !important;
+  margin: 0 0 2px !important;
+}
+
+.pdf-generating .status-banner p {
+  font-size: 9px !important;
+  line-height: 1.4 !important;
+  margin: 0 !important;
+}
+
+.pdf-generating .status-banner .icon-lucide {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.pdf-generating .bukti-next-panel {
+  padding: 10px 12px !important;
+  margin-top: 10px !important;
+}
+
+.pdf-generating .bukti-next-panel h4 {
+  font-size: 11px !important;
+  margin: 0 0 4px !important;
+}
+
+.pdf-generating .bukti-next-panel ol {
+  font-size: 9px !important;
+  line-height: 1.45 !important;
+  margin: 0 !important;
+  padding-left: 14px !important;
+}
+
+.pdf-generating .bukti-footer {
+  padding: 8px 20px !important;
+  font-size: 8px !important;
+}
+
+.pdf-generating .print-actions {
+  display: none !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border: none !important;
+}
 
