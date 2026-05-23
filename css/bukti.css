@@ -45,3 +45,45 @@
   .bukti-header { padding: 1.5rem; }
   .bukti-body    { padding: 1.5rem; }
 }
+
+@media (max-width: 600px) {
+  .print-container { margin: 0; padding: 0; }
+  .bukti-card { border-radius: 0; }
+
+  /* Header: tumpuk vertikal, QR di bawah */
+  .bukti-header { flex-wrap: wrap; padding: 1.25rem; gap: 1rem; }
+  .bukti-logo { width: 56px; height: 56px; }
+  .bukti-school-info { flex: 1; min-width: 0; }
+  .bukti-school-info h1 { font-size: 1rem; }
+  .bukti-school-info p  { font-size: .78rem; }
+  .qr-box { margin-left: 0; width: 100%; flex-direction: row; justify-content: flex-start; gap: .75rem; padding: .5rem .75rem; border-radius: var(--radius-sm); }
+  .qr-box #qrCanvas img, .qr-box #qrCanvas canvas { width: 60px !important; height: 60px !important; }
+  .qr-label { font-size: .65rem; margin-top: 0; }
+
+  /* ID Box */
+  .id-box { flex-direction: column; align-items: flex-start; gap: .75rem; padding: 1rem 1.25rem; }
+  .id-box .value { font-size: 1.3rem; word-break: break-all; }
+  .id-box-right { text-align: left; }
+
+  /* Body */
+  .bukti-body { padding: 1.25rem; }
+
+  /* Data grid: 1 kolom di mobile */
+  .bukti-body .data-grid { grid-template-columns: 1fr; }
+  .bukti-body .data-cell:nth-child(odd)  { border-right: none; border-bottom: none; padding-bottom: .25rem; }
+  .bukti-body .data-cell:nth-child(even) { padding-top: .25rem; border-bottom: 1px solid #e2e8f0; }
+  .bukti-body .data-cell:last-child { border-bottom: none; }
+  .bukti-body .data-cell:nth-last-child(2) { border-bottom: none; }
+
+  /* Status & panels */
+  .status-banner { flex-direction: column; align-items: flex-start; gap: .5rem; padding: 1rem; }
+  .bukti-next-panel { padding: 1rem; }
+  .bukti-next-panel ol { line-height: 1.8; }
+
+  /* Actions */
+  .print-actions { flex-direction: column; padding: 1.25rem; gap: .75rem; }
+  .print-actions .btn { width: 100%; text-align: center; }
+
+  .bukti-footer { padding: 1rem 1.25rem; font-size: .72rem; }
+}
+
