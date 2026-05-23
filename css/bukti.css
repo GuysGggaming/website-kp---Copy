@@ -5,12 +5,14 @@
 .print-container { max-width: 800px; margin: 2rem auto; padding: 1rem; }
 .bukti-card { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); overflow: hidden; }
 .bukti-header { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); padding: 2.5rem; color: var(--white); display: flex; gap: 2rem; align-items: center; }
-.bukti-logo { width: 80px; height: 80px; background: rgba(255,255,255,.2); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 900; color: var(--white); font-family: var(--font-head); flex-shrink: 0; border: 3px solid rgba(255,255,255,.4); }
+.bukti-logo { width: 80px; height: 80px; background: rgba(255,255,255,.2); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 3px solid rgba(255,255,255,.4); overflow: hidden; padding: 4px; }
+.bukti-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-sm); }
 .bukti-school-info h1 { color: var(--white); font-size: 1.4rem; margin-bottom: .25rem; }
 .bukti-school-info p  { color: rgba(255,255,255,.8); font-size: .85rem; }
 .bukti-tagline { margin-top: .25rem; font-size: .82rem; opacity: .7; }
-.qr-box { width: 100px; height: 100px; background: var(--gray-100); border: 2px solid var(--gray-200); border-radius: var(--radius-sm); display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; margin-left: auto; font-size: 2rem; }
-.qr-box span:last-child { font-size: .6rem; margin-top: .25rem; color: var(--gray-600); }
+.qr-box { width: 108px; background: #ffffff; border: 3px solid rgba(255,255,255,.5); border-radius: var(--radius-sm); display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; margin-left: auto; padding: 6px 6px 4px; gap: 2px; }
+.qr-box #qrCanvas img, .qr-box #qrCanvas canvas { display: block; width: 88px !important; height: 88px !important; }
+.qr-label { font-size: .58rem; color: #475569; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; margin-top: 2px; }
 .id-box { background: var(--gold); color: var(--dark); padding: 1.5rem 2.5rem; display: flex; align-items: center; justify-content: space-between; }
 .id-box .label { font-weight: 700; font-size: .82rem; text-transform: uppercase; letter-spacing: .1em; }
 .id-box .value { font-family: var(--font-head); font-size: 1.8rem; font-weight: 900; letter-spacing: .06em; }
@@ -19,10 +21,10 @@
 .status-pill { margin-top: .35rem; background: rgba(0,0,0,.12); padding: .25rem .75rem; border-radius: var(--radius-full); font-size: .75rem; font-weight: 700; display: inline-block; }
 .bukti-body { padding: 2.5rem; }
 .bukti-section-title { margin-bottom: 1.25rem; font-family: var(--font-head); }
-.bukti-body .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--gray-200); border-radius: var(--radius-md); overflow: hidden; }
-.bukti-body .data-cell { padding: .85rem 1.25rem; border-bottom: 1px solid var(--gray-200); font-size: .88rem; }
-.bukti-body .data-cell:nth-child(odd)  { background: var(--gray-50); font-weight: 600; color: var(--gray-600); border-right: 1px solid var(--gray-200); }
-.bukti-body .data-cell:nth-child(even) { color: var(--dark); font-weight: 500; }
+.bukti-body .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid #e2e8f0; border-radius: var(--radius-md); overflow: hidden; background: #ffffff; }
+.bukti-body .data-cell { padding: .85rem 1.25rem; border-bottom: 1px solid #e2e8f0; font-size: .88rem; background: #ffffff; color: #0F172A; }
+.bukti-body .data-cell:nth-child(odd)  { background: #f8fafc; font-weight: 600; color: #475569; border-right: 1px solid #e2e8f0; }
+.bukti-body .data-cell:nth-child(even) { color: #0F172A; font-weight: 500; background: #ffffff; }
 .bukti-body .data-cell:last-child, .bukti-body .data-cell:nth-last-child(2) { border-bottom: none; }
 .bukti-body .data-cell.data-cell--primary { font-weight: 700; color: var(--primary); }
 .status-banner { background: rgba(67,160,71,.1); border: 2px solid var(--accent); border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1.75rem; display: flex; align-items: center; gap: 1rem; }

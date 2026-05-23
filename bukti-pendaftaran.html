@@ -1,143 +1,160 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bukti Pendaftaran PPDB - SMK NUFA CITRA MANDIRI</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
+
 <body class="bukti-page-body">
 
-<div class="print-container">
-  <div class="bukti-card">
+  <div class="print-container">
+    <div class="bukti-card">
 
-    <!-- HEADER -->
-    <div class="bukti-header">
-      <div class="bukti-logo">N</div>
-      <div class="bukti-school-info">
-        <h1>SMK NUFA CITRA MANDIRI</h1>
-        <p>Jl. Citra Mandiri No. 1, Kota • 0812-8883-5894 (Bpk. Febri)</p>
-        <p class="bukti-tagline">Bukti pendaftaran PPDB tahun ajaran 2025/2026</p>
-      </div>
-      <div class="qr-box">
-        <span aria-hidden="true">QR</span>
-        <span>Placeholder</span>
-      </div>
-    </div>
-
-    <!-- ID BOX -->
-    <div class="id-box">
-      <div>
-        <div class="label">Nomor Pendaftaran</div>
-        <div class="value" id="idValue">PPDB-2025-00000</div>
-      </div>
-      <div class="id-box-right">
-        <div class="label">Tanggal pendaftaran</div>
-        <div class="date" id="tglDaftar">—</div>
-        <div class="status-pill">Menunggu verifikasi</div>
-      </div>
-    </div>
-
-    <!-- BODY -->
-    <div class="bukti-body">
-      <h4 class="bukti-section-title">Data calon peserta didik baru</h4>
-
-      <div class="data-grid">
-        <div class="data-cell">Nama Lengkap</div>
-        <div class="data-cell" id="bNama">—</div>
-
-        <div class="data-cell">NIK</div>
-        <div class="data-cell" id="bNIK">—</div>
-
-        <div class="data-cell">Tempat, Tanggal Lahir</div>
-        <div class="data-cell" id="bTTL">—</div>
-
-        <div class="data-cell">Jenis Kelamin</div>
-        <div class="data-cell" id="bJK">—</div>
-
-        <div class="data-cell">Alamat</div>
-        <div class="data-cell" id="bAlamat">—</div>
-
-        <div class="data-cell">Nomor HP</div>
-        <div class="data-cell" id="bHP">—</div>
-
-        <div class="data-cell">Asal Sekolah</div>
-        <div class="data-cell" id="bSekolah">—</div>
-
-        <div class="data-cell">Program Keahlian yang Dipilih</div>
-        <div class="data-cell data-cell--primary" id="bJurusan">—</div>
-      </div>
-
-      <!-- Status -->
-      <div class="status-banner">
-        <i data-lucide="badge-check" class="icon-lucide" aria-hidden="true"></i>
-        <div>
-          <h4>Pendaftaran berhasil diterima</h4>
-          <p>Data Anda tersimpan di sistem. Simpan atau cetak bukti ini. Pengumuman seleksi pada <strong>10 Juni 2026</strong> melalui website dan WhatsApp.</p>
+      <!-- HEADER -->
+      <div class="bukti-header">
+        <div class="bukti-logo"><img src="assets/images/logoo.png" alt="Logo SMK NUFA CITRA MANDIRI"></div>
+        <div class="bukti-school-info">
+          <h1>SMK NUFA CITRA MANDIRI</h1>
+          <p>Jl. Citra Mandiri No. 1, Kota • 0812-8883-5894 (Bpk. Febri)</p>
+          <p class="bukti-tagline">Bukti pendaftaran PPDB tahun ajaran 2025/2026</p>
+        </div>
+        <div class="qr-box" title="Scan untuk verifikasi nomor pendaftaran">
+          <div id="qrCanvas"></div>
+          <span class="qr-label">Scan verifikasi</span>
         </div>
       </div>
 
-      <div class="bukti-next-panel">
-        <h4>Tahapan selanjutnya</h4>
-        <ol>
-          <li>Simpan atau cetak bukti pendaftaran ini sebagai referensi</li>
-          <li>Pantau pengumuman pada <strong>10 Juni 2026</strong> di website atau WhatsApp</li>
-          <li>Bagi yang dinyatakan lulus seleksi, wajib hadir untuk verifikasi dokumen asli</li>
-          <li>Lakukan daftar ulang sesuai jadwal yang telah ditentukan</li>
-          <li>Informasi lebih lanjut: <strong>0812-3456-7890</strong> (WhatsApp)</li>
-        </ol>
+      <!-- ID BOX -->
+      <div class="id-box">
+        <div>
+          <div class="label">Nomor Pendaftaran</div>
+          <div class="value" id="idValue">PPDB-2025-00000</div>
+        </div>
+        <div class="id-box-right">
+          <div class="label">Tanggal pendaftaran</div>
+          <div class="date" id="tglDaftar">—</div>
+          <div class="status-pill">Menunggu verifikasi</div>
+        </div>
+      </div>
+
+      <!-- BODY -->
+      <div class="bukti-body">
+        <h4 class="bukti-section-title">Data calon peserta didik baru</h4>
+
+        <div class="data-grid">
+          <div class="data-cell">Nama Lengkap</div>
+          <div class="data-cell" id="bNama">—</div>
+
+          <div class="data-cell">NIK</div>
+          <div class="data-cell" id="bNIK">—</div>
+
+          <div class="data-cell">Tempat, Tanggal Lahir</div>
+          <div class="data-cell" id="bTTL">—</div>
+
+          <div class="data-cell">Jenis Kelamin</div>
+          <div class="data-cell" id="bJK">—</div>
+
+          <div class="data-cell">Alamat</div>
+          <div class="data-cell" id="bAlamat">—</div>
+
+          <div class="data-cell">Nomor HP</div>
+          <div class="data-cell" id="bHP">—</div>
+
+          <div class="data-cell">Asal Sekolah</div>
+          <div class="data-cell" id="bSekolah">—</div>
+
+          <div class="data-cell">Program Keahlian yang Dipilih</div>
+          <div class="data-cell data-cell--primary" id="bJurusan">—</div>
+        </div>
+
+        <!-- Status -->
+        <div class="status-banner">
+          <i data-lucide="badge-check" class="icon-lucide" aria-hidden="true"></i>
+          <div>
+            <h4>Pendaftaran berhasil diterima</h4>
+            <p>Data Anda tersimpan di sistem. Simpan atau cetak bukti ini. Pengumuman seleksi pada <strong>10 Juni
+                2026</strong> melalui website dan WhatsApp.</p>
+          </div>
+        </div>
+
+        <div class="bukti-next-panel">
+          <h4>Tahapan selanjutnya</h4>
+          <ol>
+            <li>Simpan atau cetak bukti pendaftaran ini sebagai referensi</li>
+            <li>Bagi yang dinyatakan lulus seleksi, wajib hadir untuk verifikasi dokumen asli</li>
+            <li>Lakukan daftar ulang sesuai jadwal yang telah ditentukan</li>
+            <li>Informasi lebih lanjut: <strong>0812-8883-5894</strong> (WhatsApp)</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="print-actions">
+        <button type="button" class="btn btn-primary" onclick="window.print()">Cetak bukti</button>
+        <a href="ppdb.html" class="btn btn-outline-primary">Daftar lagi</a>
+        <a href="index.html" class="btn btn-outline-primary">Kembali ke beranda</a>
+      </div>
+
+      <div class="bukti-footer">
+        Dokumen ini diterbitkan oleh sistem PPDB daring SMK NUFA CITRA MANDIRI · © 2026 · Bukti pendaftaran resmi
       </div>
     </div>
-
-    <!-- ACTIONS -->
-    <div class="print-actions">
-      <button type="button" class="btn btn-primary" onclick="window.print()">Cetak bukti</button>
-      <a href="ppdb.html" class="btn btn-outline-primary">Daftar lagi</a>
-      <a href="index.html" class="btn btn-outline-primary">Kembali ke beranda</a>
-    </div>
-
-    <div class="bukti-footer">
-      Dokumen ini diterbitkan oleh sistem PPDB daring SMK NUFA CITRA MANDIRI · © 2026 · Bukti pendaftaran resmi
-    </div>
   </div>
-</div>
 
-<script>
-  // Ambil data dari localStorage (disimpan saat submit PPDB)
-  window.addEventListener('DOMContentLoaded', () => {
-    const raw = localStorage.getItem('ppdbData');
-    if (!raw) {
-      // Jika tidak ada data, tampilkan pesan
-      document.getElementById('idValue').textContent = 'Data tidak ditemukan';
-      return;
-    }
+  <script>
+    // Ambil data dari localStorage (disimpan saat submit PPDB)
+    window.addEventListener('DOMContentLoaded', () => {
+      const raw = localStorage.getItem('ppdbData');
+      if (!raw) {
+        // Jika tidak ada data, tampilkan pesan
+        document.getElementById('idValue').textContent = 'Data tidak ditemukan';
+        return;
+      }
 
-    try {
-      const d = JSON.parse(raw);
+      try {
+        const d = JSON.parse(raw);
 
-      document.getElementById('idValue').textContent   = d.registrationId || '—';
-      document.getElementById('tglDaftar').textContent = d.timestamp || new Date().toLocaleDateString('id-ID');
-      document.getElementById('bNama').textContent     = d.namaLengkap || '—';
-      document.getElementById('bNIK').textContent      = d.nik || '—';
-      document.getElementById('bTTL').textContent      = `${d.tempatLahir || ''}, ${d.tanggalLahir ? new Date(d.tanggalLahir).toLocaleDateString('id-ID', {day:'2-digit',month:'long',year:'numeric'}) : ''}`;
-      document.getElementById('bJK').textContent       = d.jenisKelamin || '—';
-      document.getElementById('bAlamat').textContent   = d.alamat || '—';
-      document.getElementById('bHP').textContent       = d.nomorHP || '—';
-      document.getElementById('bSekolah').textContent  = d.asalSekolah || '—';
-      document.getElementById('bJurusan').textContent  = d.jurusan || '—';
+        const regId = d.registrationId || '—';
+        document.getElementById('idValue').textContent = regId;
+        document.getElementById('tglDaftar').textContent = d.timestamp || new Date().toLocaleDateString('id-ID');
+        document.getElementById('bNama').textContent = d.namaLengkap || '—';
+        document.getElementById('bNIK').textContent = d.nik || '—';
+        document.getElementById('bTTL').textContent = `${d.tempatLahir || ''}, ${d.tanggalLahir ? new Date(d.tanggalLahir).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }) : ''}`;
+        document.getElementById('bJK').textContent = d.jenisKelamin || '—';
+        document.getElementById('bAlamat').textContent = d.alamat || '—';
+        document.getElementById('bHP').textContent = d.nomorHP || '—';
+        document.getElementById('bSekolah').textContent = d.asalSekolah || '—';
+        document.getElementById('bJurusan').textContent = d.jurusan || '—';
 
-      // Update title
-      document.title = `Bukti PPDB — ${d.namaLengkap} — SMK NUFA CITRA MANDIRI`;
-    } catch (e) {
-      console.error('Gagal parse data PPDB:', e);
-    }
-  });
-</script>
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-  });
-</script>
+        // Generate QR code dari nomor pendaftaran
+        if (typeof QRCode !== 'undefined' && regId !== '—') {
+          new QRCode(document.getElementById('qrCanvas'), {
+            text: `SMK NUFA CITRA MANDIRI\nID: ${regId}\nNama: ${d.namaLengkap || ''}`,
+            width: 88,
+            height: 88,
+            colorDark: '#000000',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.M
+          });
+        }
+
+        // Update title
+        document.title = `Bukti PPDB — ${d.namaLengkap} — SMK NUFA CITRA MANDIRI`;
+      } catch (e) {
+        console.error('Gagal parse data PPDB:', e);
+      }
+    });
+  </script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
+  </script>
 </body>
+
 </html>
