@@ -157,29 +157,76 @@
       const btn = document.getElementById('btnDownloadPDF');
       const regId = document.getElementById('idValue')?.textContent || 'PPDB';
 
-      // Loading state
       btn.disabled = true;
       btn.textContent = 'Menyiapkan PDF...';
 
-      // Paksa layout desktop sebelum generate
-      document.body.classList.add('pdf-generating');
-
       const element = document.querySelector('.bukti-card');
+
+      // Helper untuk set inline style
+      function fs(doc, sel, styles) {
+        const nodes = doc.querySelectorAll(sel);
+        nodes.forEach(n => Object.assign(n.style, styles));
+      }
+
       const opt = {
-        margin:      [10, 10, 10, 10],
-        filename:    `Bukti-PPDB-${regId}.pdf`,
-        image:       { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, logging: false, windowWidth: 860 },
-        jsPDF:       { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak:   { mode: 'avoid-all' }
+        margin:    [8, 8, 8, 8],
+        filename:  `Bukti-${regId}.pdf`,
+        image:     { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          windowWidth: 860,
+          onclone: function(doc) {
+            // ── Paksa SEMUA layout ke desktop via inline style ──
+            fs(doc, '.bukti-header',    { display:'flex', flexWrap:'nowrap', flexDirection:'row', alignItems:'center', padding:'2rem', gap:'1.5rem' });
+            fs(doc, '.bukti-logo',      { width:'72px', height:'72px', flexShrink:'0' });
+            fs(doc, '.bukti-school-info', { flex:'1', minWidth:'0' });
+            fs(doc, '.bukti-school-info h1', { fontSize:'1.2rem' });
+            fs(doc, '.qr-box',          { display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', width:'100px', marginLeft:'auto', padding:'5px', background:'#fff' });
+            fs(doc, '.qr-box .qr-label', { marginTop:'3px' });
+            // QR canvas size
+            fs(doc, '#qrCanvas img, #qrCanvas canvas', { width:'80px', height:'80px' });
+
+            fs(doc, '.id-box',          { display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between', padding:'1.25rem 2rem' });
+            fs(doc, '.id-box .value',   { fontSize:'1.5rem', wordBreak:'normal' });
+            fs(doc, '.id-box-right',    { textAlign:'right' });
+
+            fs(doc, '.bukti-body',      { padding:'2rem' });
+            fs(doc, '.bukti-section-title', { marginBottom:'1rem' });
+
+            // Data grid — 2 kolom paksa
+            fs(doc, '.data-grid',       { display:'grid', gridTemplateColumns:'1fr 1fr' });
+            // Reset semua cell dulu
+            fs(doc, '.data-cell',       { display:'block', padding:'.7rem 1rem', fontSize:'.85rem', borderBottom:'1px solid #e2e8f0', background:'#fff', color:'#0F172A' });
+            // Odd = label (kiri)
+            doc.querySelectorAll('.data-cell:nth-child(odd)').forEach(c => {
+              c.style.background    = '#f8fafc';
+              c.style.fontWeight    = '600';
+              c.style.color         = '#475569';
+              c.style.borderRight   = '1px solid #e2e8f0';
+              c.style.paddingBottom = '.7rem';
+            });
+            // Even = nilai (kanan)
+            doc.querySelectorAll('.data-cell:nth-child(even)').forEach(c => {
+              c.style.color      = '#0F172A';
+              c.style.fontWeight = '500';
+              c.style.paddingTop = '.7rem';
+            });
+
+            fs(doc, '.status-banner',   { display:'flex', flexDirection:'row', alignItems:'center', gap:'1rem', padding:'1rem' });
+            fs(doc, '.bukti-next-panel',{ padding:'1rem' });
+            fs(doc, '.print-actions',   { display:'none' });
+          }
+        },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: 'avoid-all' }
       };
 
       html2pdf().set(opt).from(element).save().then(() => {
-        document.body.classList.remove('pdf-generating');
         btn.disabled = false;
         btn.textContent = '⬇ Unduh bukti PDF';
       }).catch(() => {
-        document.body.classList.remove('pdf-generating');
         btn.disabled = false;
         btn.textContent = '⬇ Unduh bukti PDF';
       });
