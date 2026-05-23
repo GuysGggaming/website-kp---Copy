@@ -87,3 +87,21 @@
   .bukti-footer { padding: 1rem 1.25rem; font-size: .72rem; }
 }
 
+/* ── Force desktop layout saat generate PDF ── */
+.pdf-generating .bukti-header { flex-wrap: nowrap !important; padding: 2.5rem !important; gap: 2rem !important; }
+.pdf-generating .bukti-logo { width: 80px !important; height: 80px !important; }
+.pdf-generating .bukti-school-info h1 { font-size: 1.4rem !important; }
+.pdf-generating .bukti-school-info p { font-size: .85rem !important; }
+.pdf-generating .qr-box { width: 108px !important; flex-direction: column !important; margin-left: auto !important; padding: 6px 6px 4px !important; }
+.pdf-generating .qr-box #qrCanvas img,
+.pdf-generating .qr-box #qrCanvas canvas { width: 88px !important; height: 88px !important; }
+.pdf-generating .id-box { flex-direction: row !important; align-items: center !important; padding: 1.5rem 2.5rem !important; }
+.pdf-generating .id-box .value { font-size: 1.8rem !important; word-break: normal !important; }
+.pdf-generating .id-box-right { text-align: right !important; }
+.pdf-generating .bukti-body { padding: 2.5rem !important; }
+.pdf-generating .bukti-body .data-grid { grid-template-columns: 1fr 1fr !important; }
+.pdf-generating .bukti-body .data-cell:nth-child(odd) { border-right: 1px solid #e2e8f0 !important; border-bottom: 1px solid #e2e8f0 !important; padding-bottom: .85rem !important; }
+.pdf-generating .bukti-body .data-cell:nth-child(even) { padding-top: .85rem !important; }
+.pdf-generating .status-banner { flex-direction: row !important; align-items: center !important; }
+.pdf-generating .print-actions { display: none !important; }
+

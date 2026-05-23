@@ -156,26 +156,30 @@
     function downloadPDF() {
       const btn = document.getElementById('btnDownloadPDF');
       const regId = document.getElementById('idValue')?.textContent || 'PPDB';
-      const nama  = document.getElementById('bNama')?.textContent || 'pendaftar';
 
       // Loading state
       btn.disabled = true;
       btn.textContent = 'Menyiapkan PDF...';
 
+      // Paksa layout desktop sebelum generate
+      document.body.classList.add('pdf-generating');
+
       const element = document.querySelector('.bukti-card');
       const opt = {
-        margin:      [8, 8, 8, 8],
+        margin:      [10, 10, 10, 10],
         filename:    `Bukti-PPDB-${regId}.pdf`,
         image:       { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, logging: false },
+        html2canvas: { scale: 2, useCORS: true, logging: false, windowWidth: 860 },
         jsPDF:       { unit: 'mm', format: 'a4', orientation: 'portrait' },
         pagebreak:   { mode: 'avoid-all' }
       };
 
       html2pdf().set(opt).from(element).save().then(() => {
+        document.body.classList.remove('pdf-generating');
         btn.disabled = false;
         btn.textContent = '⬇ Unduh bukti PDF';
       }).catch(() => {
+        document.body.classList.remove('pdf-generating');
         btn.disabled = false;
         btn.textContent = '⬇ Unduh bukti PDF';
       });
