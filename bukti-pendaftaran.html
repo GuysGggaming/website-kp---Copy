@@ -169,58 +169,75 @@
       }
 
       const opt = {
-        margin:    [8, 8, 8, 8],
-        filename:  `Bukti-${regId}.pdf`,
-        image:     { type: 'jpeg', quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          logging: false,
-          windowWidth: 860,
+        margin:       0,
+        filename:     `Bukti-${regId}.pdf`,
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { 
+          scale: 2, 
+          useCORS: true, 
+          logging: false, 
+          windowWidth: 800,
           onclone: function(doc) {
-            // ── Paksa SEMUA layout ke desktop via inline style ──
-            fs(doc, '.bukti-header',    { display:'flex', flexWrap:'nowrap', flexDirection:'row', alignItems:'center', padding:'2rem', gap:'1.5rem' });
-            fs(doc, '.bukti-logo',      { width:'72px', height:'72px', flexShrink:'0' });
+            // Reset margin/padding body agar rata
+            doc.body.style.margin = '0';
+            doc.body.style.padding = '0';
+            doc.body.style.background = '#ffffff';
+
+            const card = doc.querySelector('.bukti-card');
+            card.style.margin = '0';
+            card.style.boxShadow = 'none';
+            card.style.borderRadius = '0';
+            card.style.width = '800px';
+
+            // ── Paksa layout ke desktop via inline style ──
+            fs(doc, '.bukti-header',      { display:'flex', flexWrap:'nowrap', flexDirection:'row', alignItems:'center', padding:'2.5rem', gap:'1.5rem', background:'linear-gradient(135deg, #0D47A1, #1976D2)', color:'#fff' });
+            fs(doc, '.bukti-logo',        { width:'72px', height:'72px', flexShrink:'0', background:'rgba(255,255,255,.2)', borderRadius:'8px', padding:'4px', border:'3px solid rgba(255,255,255,.4)' });
+            fs(doc, '.bukti-logo img',    { width:'100%', height:'100%', objectFit:'cover', borderRadius:'4px' });
             fs(doc, '.bukti-school-info', { flex:'1', minWidth:'0' });
-            fs(doc, '.bukti-school-info h1', { fontSize:'1.2rem' });
-            fs(doc, '.qr-box',          { display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', width:'100px', marginLeft:'auto', padding:'5px', background:'#fff' });
-            fs(doc, '.qr-box .qr-label', { marginTop:'3px' });
-            // QR canvas size
+            fs(doc, '.bukti-school-info h1', { fontSize:'1.4rem', color:'#fff', margin:'0 0 .25rem 0' });
+            fs(doc, '.bukti-school-info p', { fontSize:'.85rem', color:'rgba(255,255,255,.8)', margin:'0' });
+            fs(doc, '.qr-box',            { display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', width:'100px', marginLeft:'auto', padding:'5px', background:'#fff', border:'3px solid rgba(255,255,255,.5)', borderRadius:'4px' });
+            fs(doc, '.qr-box .qr-label',   { marginTop:'3px', fontSize:'9px', color:'#475569', fontWeight:'bold' });
             fs(doc, '#qrCanvas img, #qrCanvas canvas', { width:'80px', height:'80px' });
 
-            fs(doc, '.id-box',          { display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between', padding:'1.25rem 2rem' });
-            fs(doc, '.id-box .value',   { fontSize:'1.5rem', wordBreak:'normal' });
-            fs(doc, '.id-box-right',    { textAlign:'right' });
+            fs(doc, '.id-box',            { display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between', padding:'1.5rem 2.5rem', background:'#F59E0B', color:'#0F172A' });
+            fs(doc, '.id-box .label',     { fontSize:'11px', fontWeight:'bold', textTransform:'uppercase', letterSpacing:'1px' });
+            fs(doc, '.id-box .value',     { fontSize:'1.8rem', fontWeight:'900', wordBreak:'normal', margin:'0' });
+            fs(doc, '.id-box .date',      { fontSize:'11px', opacity:'.75' });
+            fs(doc, '.id-box-right',      { textAlign:'right' });
+            fs(doc, '.status-pill',       { background:'rgba(0,0,0,.12)', padding:'4px 12px', borderRadius:'999px', fontSize:'10px', fontWeight:'bold', display:'inline-block', marginTop:'4px' });
 
-            fs(doc, '.bukti-body',      { padding:'2rem' });
-            fs(doc, '.bukti-section-title', { marginBottom:'1rem' });
+            fs(doc, '.bukti-body',        { padding:'2.5rem' });
+            fs(doc, '.bukti-section-title', { marginBottom:'1rem', fontSize:'1.1rem', fontWeight:'bold' });
 
             // Data grid — 2 kolom paksa
-            fs(doc, '.data-grid',       { display:'grid', gridTemplateColumns:'1fr 1fr' });
-            // Reset semua cell dulu
-            fs(doc, '.data-cell',       { display:'block', padding:'.7rem 1rem', fontSize:'.85rem', borderBottom:'1px solid #e2e8f0', background:'#fff', color:'#0F172A' });
-            // Odd = label (kiri)
+            fs(doc, '.data-grid',         { display:'grid', gridTemplateColumns:'1fr 1fr', border:'1px solid #e2e8f0', borderRadius:'6px' });
+            fs(doc, '.data-cell',         { display:'flex', alignItems:'center', padding:'.85rem 1.25rem', fontSize:'.88rem', borderBottom:'1px solid #e2e8f0', background:'#fff', color:'#0F172A' });
+            
             doc.querySelectorAll('.data-cell:nth-child(odd)').forEach(c => {
               c.style.background    = '#f8fafc';
               c.style.fontWeight    = '600';
               c.style.color         = '#475569';
               c.style.borderRight   = '1px solid #e2e8f0';
-              c.style.paddingBottom = '.7rem';
             });
-            // Even = nilai (kanan)
             doc.querySelectorAll('.data-cell:nth-child(even)').forEach(c => {
-              c.style.color      = '#0F172A';
               c.style.fontWeight = '500';
-              c.style.paddingTop = '.7rem';
             });
+            fs(doc, '.data-cell:last-child, .data-cell:nth-last-child(2)', { borderBottom:'none' });
 
-            fs(doc, '.status-banner',   { display:'flex', flexDirection:'row', alignItems:'center', gap:'1rem', padding:'1rem' });
-            fs(doc, '.bukti-next-panel',{ padding:'1rem' });
-            fs(doc, '.print-actions',   { display:'none' });
+            fs(doc, '.status-banner',     { display:'flex', flexDirection:'row', alignItems:'center', gap:'1rem', padding:'1.25rem', background:'rgba(67,160,71,.1)', border:'2px solid #4CAF50', borderRadius:'6px', marginTop:'1.75rem' });
+            fs(doc, '.status-banner h4',  { margin:'0 0 4px 0', color:'#2E7D32', fontSize:'1rem' });
+            fs(doc, '.status-banner p',   { margin:'0', fontSize:'.85rem' });
+
+            fs(doc, '.bukti-next-panel',  { padding:'1.25rem', background:'rgba(21,101,192,.05)', border:'1px solid rgba(21,101,192,.15)', borderRadius:'6px', marginTop:'1.75rem' });
+            fs(doc, '.bukti-next-panel h4',{ margin:'0 0 .75rem 0', color:'#1976D2' });
+            fs(doc, '.bukti-next-panel ol',{ margin:'0', paddingLeft:'1.25rem', fontSize:'.88rem', color:'#475569', lineHeight:'1.8' });
+
+            fs(doc, '.bukti-footer',      { padding:'1.25rem 2.5rem', background:'#0D47A1', color:'rgba(255,255,255,.7)', fontSize:'11px', textAlign:'center' });
+            fs(doc, '.print-actions',     { display:'none' });
           }
         },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: 'avoid-all' }
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
 
       html2pdf().set(opt).from(element).save().then(() => {
